@@ -1,12 +1,14 @@
 const http = require('http');
 const port = 3000;
-const { readFile } = require('./my-modules/readfile');
-const { writeFile } = require('./my-modules/writeFile');
-const {createFile} = require('./my-modules/createFile');
+// const { readFile } = require('./my-modules/readfile');
+// const { writeFile } = require('./my-modules/writeFile');
+// const {createFile} = require('./my-modules/createFile');
+const { addDataInFile } = require('./my-modules/addDataInFile');
 // console.log(readFile);
 
 
 let dataToStoreInFile = "this is file store check";
+let dataToUpdateInFile = "Now this is updated in existing file "
 
 const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -43,13 +45,28 @@ const server = http.createServer((req, res) => {
     //         }
     //     })
 
-    createFile('./files/demo2.html', dataToStoreInFile,(err,success)=>{
+
+    /* --- This is for creating file in file --- */
+
+    // createFile('./files/demo2.html', dataToStoreInFile,(err,success)=>{
+    //     if (err) {
+    //         res.end('File not created : ', err.message);
+    //     } else {
+    //         res.end("File is created")
+    //     }
+    // })
+
+
+    /* --- This is for updating in file --- */
+
+    addDataInFile('./files/demo2.html2', dataToUpdateInFile, (err, succ) => {
         if (err) {
-            res.end('File not created : ', err.message);
+            res.end("Data not updated : ", err.message);
         } else {
-            res.end("File is created")
+            res.end("Data updated successfully")
         }
     })
+
 
 
 
