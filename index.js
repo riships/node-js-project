@@ -59,13 +59,13 @@ const server = http.createServer((req, res) => {
 
     /* --- This is for updating in file --- */
 
-    addDataInFile('./files/demo2.html2', dataToUpdateInFile, (err, succ) => {
-        if (err) {
-            res.end("Data not updated : ", err.message);
-        } else {
-            res.end("Data updated successfully")
-        }
-    })
+    // addDataInFile('./files/demo2.html', dataToUpdateInFile, (err, succ) => {
+    //     if (err) {
+    //         res.end("Data not updated : ", err.message);
+    //     } else {
+    //         res.end("Data updated successfully")
+    //     }
+    // })
 
 
 
