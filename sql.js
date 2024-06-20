@@ -1,5 +1,7 @@
 const mysql = require('mysql');
 const http = require('http');
+const url = require('url')
+
 
 let port = 3000;
 
@@ -21,15 +23,22 @@ con.connect((err) => {
 });
 
 const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+    console.log(req.headers);
+    let query = url.parse(req.url, true);
+    
+    let country = query.country
 
-    con.query('SELECT username FROM users', (err, result, fields) => {
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+
+    con.query(`SELECT * FROM users where country="${country}"`, (err, result, fields) => {
         if (err) {
             res.end("Database query error: " + err);
             return;
         }
         if (result.length > 0) {
-            res.end("Result: " + result[0].username);
+            const jsonContent = JSON.stringify(result)
+            res.end(jsonContent);
         } else {
             res.end("No results found");
         }
