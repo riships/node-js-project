@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "username": "rishi_s_s",
+            "password": "myPass123",
+            "country": "India",
+            "email": "rishi@example.com"
+        },
+        {
+            "id": 2,
+            "username": "ankit",
+            "password": "ankit123",
+            "country": "India",
+            "email": "ankit123@gmail.com"
+        },
+        {
+            "id": 3,
+            "username": "gagan",
+            "password": "gagan123",
+            "country": "India",
+            "email": "gagan123@gmail.com"
+        },
+        {
+            "id": 4,
+            "username": "David",
+            "password": "david123",
+            "country": "USA",
+            "email": "david123@gmail.com"
+        },
+        {
+            "id": 5,
+            "username": "Vivek",
+            "password": "vivke123",
+            "country": "USA",
+            "email": "vivke123@gmail.com"
+        }
+    ]
+}

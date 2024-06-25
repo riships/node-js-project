@@ -23,22 +23,23 @@ con.connect((err) => {
 });
 
 const server = http.createServer((req, res) => {
-    console.log(req.headers);
-    let query = url.parse(req.url, true);
-    
-    let country = query.country
-
-
     res.writeHead(200, { 'Content-Type': 'application/json' });
 
-    con.query(`SELECT * FROM users where country="${country}"`, (err, result, fields) => {
+    con.query(`SELECT * FROM users`, (err, result, fields) => {
         if (err) {
             res.end("Database query error: " + err);
             return;
         }
         if (result.length > 0) {
-            const jsonContent = JSON.stringify(result)
-            res.end(jsonContent);
+
+            let NewArr = [];
+            result.map((elem)=>{
+                if (elem.country === 'India') {
+                    NewArr.push(elem)
+                }
+            })
+            res.end(JSON.stringify(NewArr))
+            // console.log(typeof jsonContent);
         } else {
             res.end("No results found");
         }
